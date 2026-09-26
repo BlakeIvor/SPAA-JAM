@@ -1,4 +1,5 @@
 using TMPro;
+using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,6 +8,8 @@ public class Interactor : MonoBehaviour
     public Transform HoldPoint;
     [SerializeField] TextMeshProUGUI InteractText;
     public Vector3 ThrowDirection => transform.forward;
+
+    [SerializeField] private float castDistance = 8f;
 
     // Specifically tracks if we are currently holding a grabbable object
     private IGrabbable currentHeldObject;
@@ -24,7 +27,7 @@ public class Interactor : MonoBehaviour
             }
 
             // Case 2: Hand is empty, look for an interactable object
-            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 3f))
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, castDistance))
             {
                 if (hit.collider.TryGetComponent(out IInteractable interactable))
                 {

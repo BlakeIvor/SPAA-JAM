@@ -297,6 +297,37 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &10224108
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 10224109}
+  m_Layer: 0
+  m_Name: FoodSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &10224109
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10224108}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.37, y: -0.234, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &11900388
 GameObject:
   m_ObjectHideFlags: 0
@@ -1640,6 +1671,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Interactor
   HoldPoint: {fileID: 355694452}
   InteractText: {fileID: 365099257}
+  castDistance: 8
 --- !u!1 &295949123
 GameObject:
   m_ObjectHideFlags: 0
@@ -2772,7 +2804,7 @@ GameObject:
   m_Component:
   - component: {fileID: 458585289}
   m_Layer: 0
-  m_Name: Spawn1
+  m_Name: FoodSpawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2787,7 +2819,7 @@ Transform:
   m_GameObject: {fileID: 458585288}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.438, y: 0.16, z: 0}
+  m_LocalPosition: {x: 1.438, y: 0.31599998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3505,6 +3537,37 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &537239350
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537239351}
+  m_Layer: 0
+  m_Name: FoodSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &537239351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537239350}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.18, y: -0.234, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &555352419
 GameObject:
   m_ObjectHideFlags: 0
@@ -4072,6 +4135,37 @@ Transform:
   - {fileID: 355694452}
   m_Father: {fileID: 1015941896}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &666153499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 666153500}
+  m_Layer: 0
+  m_Name: FoodSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &666153500
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 666153499}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.68, y: -0.234, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &715061482
 GameObject:
   m_ObjectHideFlags: 0
@@ -4634,8 +4728,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfd715b3d0a40d943b153221e238c8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FoodSpawner
+  cooldownTime: 5
+  remainingTime: 0
   spawnLocations:
   - position: {fileID: 458585289}
+    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+  - position: {fileID: 2021019569}
+    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+  - position: {fileID: 2060455580}
+    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+  - position: {fileID: 537239351}
+    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+  - position: {fileID: 10224109}
+    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+  - position: {fileID: 666153500}
     foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
 --- !u!65 &955289084
 BoxCollider:
@@ -7220,7 +7326,7 @@ Transform:
   m_GameObject: {fileID: 1297119941}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.3356504, y: 0.45172, z: -1.694274}
+  m_LocalPosition: {x: 3.3356504, y: 0.97, z: -1.694274}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7228,6 +7334,11 @@ Transform:
   - {fileID: 1356485921}
   - {fileID: 1564664099}
   - {fileID: 458585289}
+  - {fileID: 2021019569}
+  - {fileID: 2060455580}
+  - {fileID: 537239351}
+  - {fileID: 10224109}
+  - {fileID: 666153500}
   m_Father: {fileID: 828572866}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1356485915
@@ -7580,7 +7691,7 @@ Transform:
   m_GameObject: {fileID: 1356485915}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: -0.406, z: 0}
+  m_LocalPosition: {x: 0, y: -0.342, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -8235,9 +8346,9 @@ MonoBehaviour:
   m_Shape:
     rid: 9037679422530126031
   m_ShapeRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_UnmodifiedMeshVersion: 3910
-  m_Size: {x: 0.047460705, y: 4.7859564, z: 0.7722821}
-  m_LocalCenter: {x: 0.000000014901161, y: -0.14489175, z: 0}
+  m_UnmodifiedMeshVersion: 4306
+  m_Size: {x: 0.047460705, y: 4.3798327, z: 0.7722821}
+  m_LocalCenter: {x: 0.000000029802322, y: -0.24366572, z: 0}
   references:
     version: 2
     RefIds:
@@ -8371,45 +8482,45 @@ MonoBehaviour:
   - m_Vertices: 0b0000000e00000012000000
   m_SharedTextures: []
   m_Positions:
-  - {x: -0.023730336, y: -2.53787, z: 0.38614106}
-  - {x: 0.02373037, y: -2.53787, z: 0.38614106}
-  - {x: -0.023730336, y: 2.2480865, z: 0.38614106}
-  - {x: 0.02373037, y: 2.2480865, z: 0.38614106}
-  - {x: 0.02373037, y: -2.53787, z: 0.38614106}
-  - {x: 0.02373037, y: -2.53787, z: -0.38614106}
-  - {x: 0.02373037, y: 2.2480865, z: 0.38614106}
-  - {x: 0.02373037, y: 2.2480865, z: -0.38614106}
-  - {x: 0.02373037, y: -2.53787, z: -0.38614106}
-  - {x: -0.023730336, y: -2.53787, z: -0.38614106}
-  - {x: 0.02373037, y: 2.2480865, z: -0.38614106}
-  - {x: -0.023730336, y: 2.2480865, z: -0.38614106}
-  - {x: -0.023730336, y: -2.53787, z: -0.38614106}
-  - {x: -0.023730336, y: -2.53787, z: 0.38614106}
-  - {x: -0.023730336, y: 2.2480865, z: -0.38614106}
-  - {x: -0.023730336, y: 2.2480865, z: 0.38614106}
-  - {x: -0.023730336, y: 2.2480865, z: 0.38614106}
-  - {x: 0.02373037, y: 2.2480865, z: 0.38614106}
-  - {x: -0.023730336, y: 2.2480865, z: -0.38614106}
-  - {x: 0.02373037, y: 2.2480865, z: -0.38614106}
-  - {x: -0.023730336, y: -2.53787, z: -0.38614106}
-  - {x: 0.02373037, y: -2.53787, z: -0.38614106}
-  - {x: -0.023730336, y: -2.53787, z: 0.38614106}
-  - {x: 0.02373037, y: -2.53787, z: 0.38614106}
+  - {x: -0.023730323, y: -2.433582, z: 0.38614106}
+  - {x: 0.023730382, y: -2.433582, z: 0.38614106}
+  - {x: -0.023730323, y: 1.9462507, z: 0.38614106}
+  - {x: 0.023730382, y: 1.9462507, z: 0.38614106}
+  - {x: 0.023730382, y: -2.433582, z: 0.38614106}
+  - {x: 0.023730382, y: -2.433582, z: -0.38614106}
+  - {x: 0.023730382, y: 1.9462507, z: 0.38614106}
+  - {x: 0.023730382, y: 1.9462507, z: -0.38614106}
+  - {x: 0.023730382, y: -2.433582, z: -0.38614106}
+  - {x: -0.023730323, y: -2.433582, z: -0.38614106}
+  - {x: 0.023730382, y: 1.9462507, z: -0.38614106}
+  - {x: -0.023730323, y: 1.9462507, z: -0.38614106}
+  - {x: -0.023730323, y: -2.433582, z: -0.38614106}
+  - {x: -0.023730323, y: -2.433582, z: 0.38614106}
+  - {x: -0.023730323, y: 1.9462507, z: -0.38614106}
+  - {x: -0.023730323, y: 1.9462507, z: 0.38614106}
+  - {x: -0.023730323, y: 1.9462507, z: 0.38614106}
+  - {x: 0.023730382, y: 1.9462507, z: 0.38614106}
+  - {x: -0.023730323, y: 1.9462507, z: -0.38614106}
+  - {x: 0.023730382, y: 1.9462507, z: -0.38614106}
+  - {x: -0.023730323, y: -2.433582, z: -0.38614106}
+  - {x: 0.023730382, y: -2.433582, z: -0.38614106}
+  - {x: -0.023730323, y: -2.433582, z: 0.38614106}
+  - {x: 0.023730382, y: -2.433582, z: 0.38614106}
   m_Textures0:
-  - {x: 0.047460705, y: -3.7859564}
-  - {x: 0, y: -3.7859564}
+  - {x: 0.047460705, y: -3.3798327}
+  - {x: 0, y: -3.3798327}
   - {x: 0.047460705, y: 1}
   - {x: 0, y: 1}
-  - {x: 0.7722821, y: -3.7859564}
-  - {x: 0, y: -3.7859564}
+  - {x: 0.7722821, y: -3.3798327}
+  - {x: 0, y: -3.3798327}
   - {x: 0.7722821, y: 1}
   - {x: 0, y: 1}
-  - {x: 0.047460705, y: -3.7859564}
-  - {x: 0, y: -3.7859564}
+  - {x: 0.047460705, y: -3.3798327}
+  - {x: 0, y: -3.3798327}
   - {x: 0.047460705, y: 1}
   - {x: 0, y: 1}
-  - {x: 0.7722821, y: -3.7859564}
-  - {x: 0, y: -3.7859564}
+  - {x: 0.7722821, y: -3.3798327}
+  - {x: 0, y: -3.3798327}
   - {x: 0.7722821, y: 1}
   - {x: 0, y: 1}
   - {x: 0, y: 1}
@@ -8456,7 +8567,7 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 1995000629}
-  m_VersionIndex: 3910
+  m_VersionIndex: 4306
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
@@ -8470,7 +8581,7 @@ Transform:
   m_GameObject: {fileID: 1564664093}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.09399998, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -9510,8 +9621,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: 0.000000016763806, y: -0.14489174, z: 0}
-      m_Extent: {x: 0.023730353, y: 2.3929782, z: 0.38614106}
+      m_Center: {x: 0.000000029802322, y: -0.2436657, z: 0}
+      m_Extent: {x: 0.023730353, y: 2.1899164, z: 0.38614106}
   m_Shapes:
     vertices: []
     shapes: []
@@ -9590,7 +9701,7 @@ Mesh:
       format: 0
       dimension: 0
     m_DataSize: 1152
-    _typelessdata: 1f66c2bc766c22c048b4c53e00000000000000000000803f000080bf0000000000000000000080bf2866423d1c4d72c03166c23c766c22c048b4c53e00000000000000000000803f000080bf0000000000000000000080bf000000001c4d72c01f66c2bca6e00f4048b4c53e00000000000000000000803f000080bf0000000000000000000080bf2866423d0000803f3166c23ca6e00f4048b4c53e00000000000000000000803f000080bf0000000000000000000080bf000000000000803f3166c23c766c22c048b4c53e0000803f000000000000000000000000000000000000803f000080bf48b4453f1c4d72c03166c23c766c22c048b4c5be0000803f000000000000000000000000000000000000803f000080bf000000001c4d72c03166c23ca6e00f4048b4c53e0000803f000000000000000000000000000000000000803f000080bf48b4453f0000803f3166c23ca6e00f4048b4c5be0000803f000000000000000000000000000000000000803f000080bf000000000000803f3166c23c766c22c048b4c5be0000000000000000000080bf0000803f0000000000000000000080bf2866423d1c4d72c01f66c2bc766c22c048b4c5be0000000000000000000080bf0000803f0000000000000000000080bf000000001c4d72c03166c23ca6e00f4048b4c5be0000000000000000000080bf0000803f0000000000000000000080bf2866423d0000803f1f66c2bca6e00f4048b4c5be0000000000000000000080bf0000803f0000000000000000000080bf000000000000803f1f66c2bc766c22c048b4c5be000080bf00000000000000000000000000000000000080bf000080bf48b4453f1c4d72c01f66c2bc766c22c048b4c53e000080bf00000000000000000000000000000000000080bf000080bf000000001c4d72c01f66c2bca6e00f4048b4c5be000080bf00000000000000000000000000000000000080bf000080bf48b4453f0000803f1f66c2bca6e00f4048b4c53e000080bf00000000000000000000000000000000000080bf000080bf000000000000803f1f66c2bca6e00f4048b4c53e000000000000803f000000000000803f0000000000000000000080bf000000000000803f3166c23ca6e00f4048b4c53e000000000000803f000000000000803f0000000000000000000080bf2866423d0000803f1f66c2bca6e00f4048b4c5be000000000000803f000000000000803f0000000000000000000080bf00000000e02e693e3166c23ca6e00f4048b4c5be000000000000803f000000000000803f0000000000000000000080bf2866423de02e693e1f66c2bc766c22c048b4c5be00000000000080bf00000000000080bf0000000000000000000080bf2866423de02e693e3166c23c766c22c048b4c5be00000000000080bf00000000000080bf0000000000000000000080bf00000000e02e693e1f66c2bc766c22c048b4c53e00000000000080bf00000000000080bf0000000000000000000080bf2866423d0000803f3166c23c766c22c048b4c53e00000000000080bf00000000000080bf0000000000000000000080bf000000000000803f
+    _typelessdata: 1866c2bccfbf1bc048b4c53e00000000000000000000803f000080bf0000000000000000000080bf2866423d2e4f58c03866c23ccfbf1bc048b4c53e00000000000000000000803f000080bf0000000000000000000080bf000000002e4f58c01866c2bcbe1ef93f48b4c53e00000000000000000000803f000080bf0000000000000000000080bf2866423d0000803f3866c23cbe1ef93f48b4c53e00000000000000000000803f000080bf0000000000000000000080bf000000000000803f3866c23ccfbf1bc048b4c53e0000803f000000000000000000000000000000000000803f000080bf48b4453f2e4f58c03866c23ccfbf1bc048b4c5be0000803f000000000000000000000000000000000000803f000080bf000000002e4f58c03866c23cbe1ef93f48b4c53e0000803f000000000000000000000000000000000000803f000080bf48b4453f0000803f3866c23cbe1ef93f48b4c5be0000803f000000000000000000000000000000000000803f000080bf000000000000803f3866c23ccfbf1bc048b4c5be0000000000000000000080bf0000803f0000000000000000000080bf2866423d2e4f58c01866c2bccfbf1bc048b4c5be0000000000000000000080bf0000803f0000000000000000000080bf000000002e4f58c03866c23cbe1ef93f48b4c5be0000000000000000000080bf0000803f0000000000000000000080bf2866423d0000803f1866c2bcbe1ef93f48b4c5be0000000000000000000080bf0000803f0000000000000000000080bf000000000000803f1866c2bccfbf1bc048b4c5be000080bf00000000000000000000000000000000000080bf000080bf48b4453f2e4f58c01866c2bccfbf1bc048b4c53e000080bf00000000000000000000000000000000000080bf000080bf000000002e4f58c01866c2bcbe1ef93f48b4c5be000080bf00000000000000000000000000000000000080bf000080bf48b4453f0000803f1866c2bcbe1ef93f48b4c53e000080bf00000000000000000000000000000000000080bf000080bf000000000000803f1866c2bcbe1ef93f48b4c53e000000000000803f000000000000803f0000000000000000000080bf000000000000803f3866c23cbe1ef93f48b4c53e000000000000803f000000000000803f0000000000000000000080bf2866423d0000803f1866c2bcbe1ef93f48b4c5be000000000000803f000000000000803f0000000000000000000080bf00000000e02e693e3866c23cbe1ef93f48b4c5be000000000000803f000000000000803f0000000000000000000080bf2866423de02e693e1866c2bccfbf1bc048b4c5be00000000000080bf00000000000080bf0000000000000000000080bf2866423de02e693e3866c23ccfbf1bc048b4c5be00000000000080bf00000000000080bf0000000000000000000080bf00000000e02e693e1866c2bccfbf1bc048b4c53e00000000000080bf00000000000080bf0000000000000000000080bf2866423d0000803f3866c23ccfbf1bc048b4c53e00000000000080bf00000000000080bf0000000000000000000080bf000000000000803f
   m_CompressedMesh:
     m_Vertices:
       m_NumItems: 0
@@ -9644,8 +9755,8 @@ Mesh:
       m_BitSize: 0
     m_UVInfo: 0
   m_LocalAABB:
-    m_Center: {x: 0.000000016763806, y: -0.14489174, z: 0}
-    m_Extent: {x: 0.023730353, y: 2.3929782, z: 0.38614106}
+    m_Center: {x: 0.000000029802322, y: -0.2436657, z: 0}
+    m_Extent: {x: 0.023730353, y: 2.1899164, z: 0.38614106}
   m_MeshUsageFlags: 0
   m_CookingOptions: 30
   m_BakedConvexCollisionMesh: 
@@ -10027,6 +10138,68 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!1 &2021019568
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2021019569}
+  m_Layer: 0
+  m_Name: FoodSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2021019569
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021019568}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.27, y: 0.31599998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2060455579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2060455580}
+  m_Layer: 0
+  m_Name: FoodSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2060455580
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2060455579}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.18, y: 0.31599998, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
