@@ -39,7 +39,7 @@ public class Customer : MonoBehaviour, IInteractable
     {
         if (State == CustomerState.InLine)
         {
-            FollowPath(walkInWaypoints, WaitingForOrder);
+            FollowPath(walkInWaypoints, FirstInLine);
         }
         else if (State == CustomerState.CompletedOrder)
         {
@@ -88,6 +88,12 @@ public class Customer : MonoBehaviour, IInteractable
     public void SetCustomerAhead(Customer customer)
     {
         customerAhead = customer;
+    }
+
+    private void FirstInLine()
+    {
+        State = CustomerState.FirstInLine;
+        waypointIndex = 0;
     }
 
     private void WaitingForOrder()
