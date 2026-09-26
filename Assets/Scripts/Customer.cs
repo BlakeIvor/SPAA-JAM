@@ -9,7 +9,7 @@ public class Customer : MonoBehaviour, IInteractable
         customerData = data;
     }
 
-    public void Interact()
+    public void Interact(Interactor interactor)
     {
         DialogueManager.Instance.StartTyping(customerData.orderToString());
     }
