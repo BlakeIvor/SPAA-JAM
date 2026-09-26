@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Customer : MonoBehaviour, IInteractable
 {
-    public string interactMessage => "Talk to Customer";
+    public string interactMessage { get; set; } = "Talk to Customer";
     [SerializeField] CustomerSO customerData;
 
     public void Initialize(CustomerSO data)
