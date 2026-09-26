@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f212f761fad439c4a8b9e29c2a4eb90f, type: 3}
+  m_Name: Order1
+  m_EditorClassIdentifier: Assembly-CSharp::Order
+  itemSprite: {fileID: 2100000, guid: 754c8f55a4f007b4b93b9da83bc16d03, type: 2}
+  itemName: Cupcake
+  quantity: 1

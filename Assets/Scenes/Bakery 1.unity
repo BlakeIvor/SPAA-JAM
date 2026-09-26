@@ -6028,10 +6028,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f58584ecf89c24fa40574108cd3ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawner
+  currentCustomers: 0
   maxCustomers: 5
   spawnInterval: 12
-  customerPrefab: {fileID: 0}
-  customerTypes: []
+  queueSpacing: 1.25
+  customerPrefab: {fileID: 8206869914428677548, guid: 629e6fbf2c37a3f4b8a2ec17b6a8b4df, type: 3}
+  customerTypes:
+  - {fileID: 11400000, guid: e7dc5a4787b691045885102a21908e9b, type: 2}
   walkInWaypoints:
   - {fileID: 200590844}
   - {fileID: 1625287538}
@@ -6229,7 +6232,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1678675981}
   m_Layer: 0
-  m_Name: Walkout_Point1 (1)
+  m_Name: Walkout_Point2
   m_TagString: Untagged
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
