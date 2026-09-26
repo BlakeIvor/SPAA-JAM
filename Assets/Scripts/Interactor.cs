@@ -1,9 +1,11 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
     public Transform HoldPoint;
+    [SerializeField] TextMeshProUGUI InteractText;
     public Vector3 ThrowDirection => transform.forward;
 
     // Specifically tracks if we are currently holding a grabbable object
@@ -35,6 +37,21 @@ public class Interactor : MonoBehaviour
                     // Trigger the interaction (works for both standard items and grabbed items)
                     interactable.Interact(this);
                 }
+            }
+        }
+        else
+        {
+            // Raycast to check if any interactable object is in front of the player, and if so, set text to its interact prompt
+            if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 3f))
+            {
+                if (hit.collider.TryGetComponent(out IInteractable interactable))
+                {
+                    InteractText.text = interactable.interactMessage;
+                }
+            }
+            else
+            {
+                InteractText.text = "";
             }
         }
     }

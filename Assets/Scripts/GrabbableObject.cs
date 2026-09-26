@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class GrabbableObject : MonoBehaviour, IGrabbable
 {
-    [SerializeField] private string objectInteractMessage = "Grab Object";
+    
     private Rigidbody rb;
 
-    public string InteractMessage => objectInteractMessage;
+    public string interactMessage => "GrabbableObject";
 
     private void Awake() => rb = GetComponent<Rigidbody>();
 
