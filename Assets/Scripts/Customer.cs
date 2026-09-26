@@ -4,6 +4,7 @@ using UnityEngine;
 public enum CustomerState
 {
     InLine,
+    FirstInLine,
     WaitingForOrder,
     CompletedOrder
 }
@@ -38,7 +39,7 @@ public class Customer : MonoBehaviour, IInteractable
     {
         if (State == CustomerState.InLine)
         {
-            FollowPath(walkInWaypoints, WaitingForOrder);
+            FollowPath(walkInWaypoints, FirstInLine);
         }
         else if (State == CustomerState.CompletedOrder)
         {
@@ -89,6 +90,12 @@ public class Customer : MonoBehaviour, IInteractable
         customerAhead = customer;
     }
 
+    private void FirstInLine()
+    {
+        State = CustomerState.FirstInLine;
+        waypointIndex = 0;
+    }
+
     private void WaitingForOrder()
     {
         State = CustomerState.WaitingForOrder;
@@ -114,9 +121,16 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void Interact(Interactor interactor)
     {
-        if (State == CustomerState.WaitingForOrder)
+        if (State == CustomerState.FirstInLine)
         {
             DialogueManager.Instance.StartTyping(customerData.orderToString());
+            State = CustomerState.WaitingForOrder;
+            interactMessage = "Give order to customer";
+        }
+        else if (State == CustomerState.WaitingForOrder)
+        {
+            // Give order to player logic here
+            CompleteOrder();
         }
     }
 }
