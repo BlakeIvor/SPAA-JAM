@@ -4,13 +4,14 @@ using UnityEngine;
 public enum CustomerState
 {
     InLine,
+    FirstInLine,
     WaitingForOrder,
     CompletedOrder
 }
 
 public class Customer : MonoBehaviour, IInteractable
 {
-    public string interactMessage => "Talk to Customer";
+    public string interactMessage => "Take Customer Order";
     [SerializeField] CustomerSO customerData;
     [SerializeField] float moveSpeed = 2f;
 
@@ -114,9 +115,16 @@ public class Customer : MonoBehaviour, IInteractable
 
     public void Interact(Interactor interactor)
     {
-        if (State == CustomerState.WaitingForOrder)
+        if (State == CustomerState.FirstInLine)
         {
             DialogueManager.Instance.StartTyping(customerData.orderToString());
+            State = CustomerState.WaitingForOrder;
+            interactMessage = "Give order to customer";
+        }
+        else if (State == CustomerState.WaitingForOrder)
+        {
+            // Give order to player logic here
+            CompleteOrder();
         }
     }
 }
