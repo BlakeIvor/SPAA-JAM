@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
@@ -6,10 +7,13 @@ public class CustomerSpawner : MonoBehaviour
     public int currentCustomers = 0;
     public int maxCustomers = 5;
     [SerializeField] float spawnInterval = 12f;
+    [SerializeField] float queueSpacing = 1.25f;
     [SerializeField] GameObject customerPrefab;
     [SerializeField] CustomerSO[] customerTypes;
     [SerializeField] Transform[] walkInWaypoints;
     [SerializeField] Transform[] walkOutWaypoints;
+
+    private readonly List<Customer> customersInQueue = new();
 
     void Start()
     {
@@ -18,10 +22,14 @@ public class CustomerSpawner : MonoBehaviour
 
     private IEnumerator SpawnCustomer()
     {
-        while (true && currentCustomers < maxCustomers)
+        while (true)
         {
             yield return new WaitForSeconds(spawnInterval);
-            SpawnCustomerInstance();
+
+            if (currentCustomers < maxCustomers)
+            {
+                SpawnCustomerInstance();
+            }
         }
     }
 
@@ -43,7 +51,29 @@ public class CustomerSpawner : MonoBehaviour
             return;
         }
 
-        customer.Initialize(customerTypes[Random.Range(0, customerTypes.Length)]);
+        Customer customerAhead = customersInQueue.Count > 0
+            ? customersInQueue[customersInQueue.Count - 1]
+            : null;
+
+        customer.Initialize(customerTypes[Random.Range(0, customerTypes.Length)], walkInWaypoints, walkOutWaypoints, queueSpacing, CustomerLeft);
+        customer.SetCustomerAhead(customerAhead);
+        customersInQueue.Add(customer);
         currentCustomers++;
+    }
+
+    private void CustomerLeft(Customer customer)
+    {
+        customersInQueue.Remove(customer);
+        UpdateQueueLinks();
+        currentCustomers = Mathf.Max(0, currentCustomers - 1);
+    }
+
+    private void UpdateQueueLinks()
+    {
+        for (int customerIndex = 0; customerIndex < customersInQueue.Count; customerIndex++)
+        {
+            Customer customerAhead = customerIndex > 0 ? customersInQueue[customerIndex - 1] : null;
+            customersInQueue[customerIndex].SetCustomerAhead(customerAhead);
+        }
     }
 }
