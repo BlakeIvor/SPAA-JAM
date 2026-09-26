@@ -11,7 +11,7 @@ public enum CustomerState
 
 public class Customer : MonoBehaviour, IInteractable
 {
-    public string interactMessage => "Take Customer Order";
+    public string interactMessage { get; set; } = "Talk to Customer";
     [SerializeField] CustomerSO customerData;
     [SerializeField] float moveSpeed = 2f;
 

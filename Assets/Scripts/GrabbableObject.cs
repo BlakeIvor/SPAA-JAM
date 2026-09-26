@@ -5,7 +5,7 @@ public class GrabbableObject : MonoBehaviour, IGrabbable
     
     private Rigidbody rb;
 
-    public string interactMessage => "GrabbableObject";
+    public string interactMessage { get; set; } = "Grab Object";
 
     private void Awake() => rb = GetComponent<Rigidbody>();
 

@@ -13,7 +13,7 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
-        if (Keyboard.current.eKey.wasPressedThisFrame)
+        if (Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
             // Case 1: We are currently holding an object, so press 'E' to drop it
             if (currentHeldObject != null)
@@ -41,6 +41,12 @@ public class Interactor : MonoBehaviour
         }
         else
         {
+            if (currentHeldObject != null)
+            {
+                InteractText.text = "";
+                return;
+            }
+
             // Raycast to check if any interactable object is in front of the player, and if so, set text to its interact prompt
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 3f))
             {
