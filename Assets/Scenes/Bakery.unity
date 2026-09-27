@@ -14254,7 +14254,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 176653007}
+  m_Mesh: {fileID: 237296698}
 --- !u!33 &1100407465
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -19134,6 +19134,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 299230782371492208, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
+      propertyPath: m_Name
+      value: Walkout_Point3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1110721665526007339, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2881128496742779392, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -6.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6351592278583782736, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
       propertyPath: m_Name
       value: CustomerSpawner
@@ -19180,7 +19192,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7946664766159005059, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.93
+      value: -6.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8583578325108375452, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
+      propertyPath: 'customerTypes.Array.data[6]'
+      value: 
+      objectReference: {fileID: 11400000, guid: e7dc5a4787b691045885102a21908e9b, type: 2}
+    - target: {fileID: 8824934894983422276, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
+      propertyPath: m_Name
+      value: Walkout_Point2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
