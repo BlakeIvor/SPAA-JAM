@@ -13,7 +13,10 @@ public class Food : MonoBehaviour
         {
             if (hitCollider.TryGetComponent(out Customer customer))
             {
-                customer.Interact(flavor);
+                if (customer.Interact(flavor))
+                {
+                    Destroy(gameObject);
+                }
             }
         }
     }
