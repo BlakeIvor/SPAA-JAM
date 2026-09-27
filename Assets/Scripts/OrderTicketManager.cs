@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class OrderTicketManager : MonoBehaviour
@@ -6,6 +7,8 @@ public class OrderTicketManager : MonoBehaviour
 
     [SerializeField] private GameObject orderTicketPrefab;
     [SerializeField] private GameObject ticketContainer;
+
+    private readonly System.Collections.Generic.List<OrderTicketUI> ticketList = new System.Collections.Generic.List<OrderTicketUI>();
 
     void Awake()
     {
@@ -26,5 +29,14 @@ public class OrderTicketManager : MonoBehaviour
         {
             ticketUI.SetOrderDetails(customerData);
         }
+        ticketList.Add(ticketUI);
+    }
+
+    public void RemoveOrderTicket(CustomerSO customerData)
+    {
+        var ticket = ticketList[0];
+        ticketList.RemoveAt(0);
+        Destroy(ticket.gameObject);
+
     }
 }

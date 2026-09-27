@@ -111,6 +111,9 @@ public class Customer : MonoBehaviour, IInteractable
 
         State = CustomerState.CompletedOrder;
         waypointIndex = 0;
+
+        // Remove the order ticket from the OrderTicketManager
+        OrderTicketManager.Instance.RemoveOrderTicket(customerData);
     }
 
     private void Leave()
@@ -123,7 +126,7 @@ public class Customer : MonoBehaviour, IInteractable
     {
         if (State == CustomerState.FirstInLine)
         {
-            DialogueManager.Instance.StartDialogue(customerData.orderToString());
+            DialogueManager.Instance.StartTyping(customerData.orderToString());
             OrderTicketManager.Instance.CreateOrderTicket(customerData);
             State = CustomerState.WaitingForOrder;
             interactMessage = "Give order to customer";
@@ -131,8 +134,18 @@ public class Customer : MonoBehaviour, IInteractable
         else if (State == CustomerState.WaitingForOrder)
         {
             // Give order to player logic here
-            DialogueManager.Instance.StartDialogue(customerData.closingDialogue);
-            CompleteOrder();
+            //CompleteOrder(); Disabled for now, as we want to wait for the player to give the item to the customer
         }
+    }
+
+    public bool Interact(FoodSpawner.FlavorType flavor)
+    {
+        // Implement customer satisfaction logic based on flavor type here
+        if(State == CustomerState.WaitingForOrder)
+        {
+            CompleteOrder();
+            return true;
+        }
+        return false;
     }
 }
