@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
+    public static CustomerSpawner Instance { get; private set; }
     [SerializeField] float spawnInterval = 12f;
     [SerializeField] float queueSpacing = 1.25f;
     [SerializeField] GameObject customerPrefab;
@@ -12,6 +13,17 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] Transform[] walkOutWaypoints;
 
     private readonly List<Customer> customersInQueue = new();
+
+    void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+    }
 
     public void StartGame()
     {
@@ -71,5 +83,10 @@ public class CustomerSpawner : MonoBehaviour
             Customer customerAhead = customerIndex > 0 ? customersInQueue[customerIndex - 1] : null;
             customersInQueue[customerIndex].SetCustomerAhead(customerAhead);
         }
+    }
+
+    public int getNumCustomersInQueue()
+    {
+        return customersInQueue.Count;
     }
 }

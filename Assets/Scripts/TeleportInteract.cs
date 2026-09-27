@@ -7,6 +7,7 @@ public class TeleportInteract : MonoBehaviour, IInteractable
     [SerializeField] bool disableOnInteract = false; // Whether to disable the entry point after interaction
     [SerializeField] private Transform breakroom; // The position to teleport the player to
     [SerializeField] private string interactText; // The text to display the interaction message
+    [SerializeField] private bool toUpstairs;
 
     public string interactMessage { get; set; } = "Switch off with your coworker?";
 
@@ -17,9 +18,26 @@ public class TeleportInteract : MonoBehaviour, IInteractable
     }
     public void Interact(Interactor interactor)
     {
-        // Teleport into the breakroom
-        StartCoroutine(Enter(interactor));
-
+        if (toUpstairs)
+        {
+            if (GameManager.Instance.storeOpen)
+            {
+                DialogueManager.Instance.StartDialogue("You can't go upstairs while the store is open. Please close the store first.");
+            }
+            else if (CustomerSpawner.Instance.getNumCustomersInQueue() > 0)
+            {
+                DialogueManager.Instance.StartDialogue("You can't go upstairs while there are still customers in the store. Please complete their order first.");
+            }
+            else
+            {
+                StartCoroutine(Enter(interactor));
+            }
+        }
+        else
+        {
+            StartCoroutine(Enter(interactor));
+        }
+        
     }
 
     private IEnumerator Enter(Interactor interactor)
