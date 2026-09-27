@@ -15568,7 +15568,7 @@ MonoBehaviour:
   - position: {fileID: 706685099}
     foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
   - position: {fileID: 1025158377}
-    foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: c18b576bd1f07d341bd151b6d72801f2, type: 3}
 --- !u!65 &955289084
 BoxCollider:
   m_ObjectHideFlags: 0
