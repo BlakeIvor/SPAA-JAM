@@ -39,8 +39,23 @@ public class FirstPersonLook : MonoBehaviour
         xRotation -= mouseY; // Invert Y because moving mouse up usually means a smaller rotation angle in Unity scene space
 
         // 3. Apply Clamping (The "Locked Span" logic)
-        xRotation = Mathf.Clamp(xRotation, minVerticalAngle, maxVerticalAngle);
-        yRotation = Mathf.Clamp(yRotation, minHorizontalAngle, maxHorizontalAngle);
+        // Make sure if set to 360 degrees, it doesn't clamp, otherwise clamp to the specified range
+        if (360f - (maxVerticalAngle - minVerticalAngle) < 0.01f)
+        {
+            // No clamping for vertical rotation
+        }
+        else
+        {
+            xRotation = Mathf.Clamp(xRotation, minVerticalAngle, maxVerticalAngle);
+        }
+        if (360f - (maxHorizontalAngle - minHorizontalAngle) < 0.01f)
+        {
+            // No clamping for horizontal rotation
+        }
+        else
+        {
+            yRotation = Mathf.Clamp(yRotation, minHorizontalAngle, maxHorizontalAngle);
+        }
 
         //Apply both rotations to pivot
         //cameraPivot.localRotation = Quaternion.Euler(xRotation, yRotation, 0f);
