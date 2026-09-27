@@ -124,6 +124,7 @@ public class Customer : MonoBehaviour, IInteractable
         if (State == CustomerState.FirstInLine)
         {
             DialogueManager.Instance.StartTyping(customerData.orderToString());
+            OrderTicketManager.Instance.CreateOrderTicket(customerData);
             State = CustomerState.WaitingForOrder;
             interactMessage = "Give order to customer";
         }
