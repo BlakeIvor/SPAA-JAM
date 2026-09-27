@@ -6,5 +6,6 @@ public class BedInteractable : MonoBehaviour, IInteractable
 
     public void Interact(Interactor interactor)
     {
+        GameManager.Instance.GoToNextDay();
     }
 }

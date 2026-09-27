@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    [SerializeField] private FoodSpawner.FlavorType flavor;
+    [SerializeField] private FoodSpawner.FlavorType[] flavor;
     [SerializeField] private float castRadius = 3f;
     public void OnDrop()
     {

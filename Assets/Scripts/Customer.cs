@@ -138,7 +138,7 @@ public class Customer : MonoBehaviour, IInteractable
         }
     }
 
-    public bool Interact(FoodSpawner.FlavorType flavor)
+    public bool Interact(FoodSpawner.FlavorType[] flavors)
     {
         // Implement customer satisfaction logic based on flavor type here
         if(State == CustomerState.WaitingForOrder)

@@ -4,6 +4,6 @@ using UnityEngine;
 public class Order : ScriptableObject
 {
     public Material itemSprite;
-    public string itemName;
+    public FoodSpawner.FlavorType flavor;
     public int quantity;
 }

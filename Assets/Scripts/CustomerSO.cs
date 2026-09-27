@@ -16,7 +16,7 @@ public class CustomerSO : ScriptableObject
 
         foreach (Order order in customerOrder)
         {
-            orderString += $"\n- {order.itemName} x{order.quantity}";
+            orderString += $"\n- {order.quantity} of something {order.flavor}";
         }
 
         return orderString;

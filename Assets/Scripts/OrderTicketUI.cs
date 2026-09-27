@@ -10,7 +10,7 @@ public class OrderTicketUI : MonoBehaviour
         string orderString = "";
         foreach (Order order in customerData.customerOrder)
         {
-            orderString += $"\n- {order.itemName} x{order.quantity}";
+            orderString += $"\n- {order.quantity} {order.flavor} item(s)";
         }
         orderDetailsText.text = orderString;
     }

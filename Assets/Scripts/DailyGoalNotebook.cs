@@ -12,9 +12,17 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     [SerializeField] private GameObject goalSelectedPrefab;
     [SerializeField] private List<string> goalChoices = new()
     {
+        "Serve 3 customers",
         "Serve 5 customers",
-        "Complete 3 orders",
-        "Restock all food"
+        "Serve 10 customers",
+        "Take 1 break throughout the day",
+        "Take 2 breaks throughout the day",
+        "Eat 1 snack throughout the day",
+        "Eat 2 snacks throughout the day",
+        "Serve 2 customer w/ Good Recommendation",
+        "Serve 3 customer w/ Good Recommendation",
+        "Serve 5 customer w/ Good Recommendation",
+
     };
     [SerializeField] private UnityEvent<string> goalSelected;
     private bool isGoalSelected = false;
