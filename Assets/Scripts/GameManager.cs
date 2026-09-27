@@ -4,7 +4,6 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    [SerializeField] CustomerSpawner customerSpawner;
     private bool _storeOpen;
     public bool storeOpen
     {
@@ -47,7 +46,7 @@ public class GameManager : MonoBehaviour
     private void StartGame()
     {
         DialogueManager.Instance.DialogueClosed -= StartGame;
-        customerSpawner.StartGame();
+        CustomerSpawner.Instance.StartGame();
         storeOpen = true;
     }
 
