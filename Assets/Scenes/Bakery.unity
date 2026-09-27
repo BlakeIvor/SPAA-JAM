@@ -13264,9 +13264,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::TeleportInteract
   breakroom: {fileID: 480147413}
   interactText: Head Upstairs (Get some rest!)
-  toUpstairs: 0
+  toUpstairs: 1
   coworkerInteract: 0
-  coworker: {fileID: 0}
+  coworker: {fileID: 1625462071}
 --- !u!43 &775572958
 Mesh:
   m_ObjectHideFlags: 0
@@ -30935,6 +30935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64aaa91309946364384d178b34e6c292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  sunAnimator: {fileID: 591592411}
   pauseMenu: {fileID: 573882560}
 --- !u!1 &1564664093
 GameObject:

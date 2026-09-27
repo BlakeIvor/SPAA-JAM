@@ -4,6 +4,7 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField] Animator sunAnimator;
     [SerializeField] PauseMenu pauseMenu;
     public event Action OnDailyGoalProgressChanged;
     public string SelectedDailyGoal { get; private set; }
@@ -36,7 +37,7 @@ public class GameManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-
+        Debug.Log("GameManager initialized.");
         Instance = this;
     }
 
@@ -66,7 +67,19 @@ public class GameManager : MonoBehaviour
 
     public void GoToNextDay()
     {
+        sunAnimator.Play("SunAnimation", 0, 0f);
+        Interactor.Instance.playerStamina.AddStamina(100f);
+        DailyGoalNotebook notebook = FindFirstObjectByType<DailyGoalNotebook>();
+        if (notebook != null)
+        {
+            notebook.ResetDailyGoal();
+        }
 
+        DiminishingInteract[] diminishingInteracts = FindObjectsOfType<DiminishingInteract>();
+        foreach (DiminishingInteract interact in diminishingInteracts)
+        {
+            interact.Reset();
+        }
     }
 
     public void SetDailyGoal(string goal)
