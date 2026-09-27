@@ -158,7 +158,7 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     {
         SelectedGoal = null;
         isGoalSelected = false;
-        Destroy(goalSelectedContainer.GetChild(0).gameObject);
+        // Destroy(goalSelectedContainer.GetChild(0).gameObject);
         interactMessage = "Choose daily goal";
         if (selectedGoalText != null)
         {

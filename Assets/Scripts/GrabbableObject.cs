@@ -2,12 +2,16 @@ using UnityEngine;
 
 public class GrabbableObject : MonoBehaviour, IGrabbable
 {
-    
+    public string objectName = "Object";
     private Rigidbody rb;
 
     public string interactMessage { get; set; } = "Grab Object";
 
-    private void Awake() => rb = GetComponent<Rigidbody>();
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody>();
+        interactMessage = $"Grab {objectName}";
+    }
 
     public void Interact(Interactor interactor)
     {
