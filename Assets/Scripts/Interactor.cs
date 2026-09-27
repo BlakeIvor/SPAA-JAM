@@ -8,6 +8,8 @@ public class Interactor : MonoBehaviour
     // Static reference to the Interactor instance, allowing other scripts to easily access it
     public static Interactor Instance { get; private set; }
 
+    public Stamina playerStamina;
+
     public Transform HoldPoint;
     [SerializeField] TextMeshProUGUI InteractText;
     public Vector3 ThrowDirection => transform.forward;

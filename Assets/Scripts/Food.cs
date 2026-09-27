@@ -16,6 +16,7 @@ public class Food : MonoBehaviour
                 if (customer.Interact(flavor))
                 {
                     Destroy(gameObject);
+                    Interactor.Instance.playerStamina.SubtractStamina(10f);
                 }
             }
         }
