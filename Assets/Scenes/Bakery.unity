@@ -7624,7 +7624,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711d6688c821432428ac76bd2f8e225a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TeleportInteract
-  disableOnInteract: 0
   breakroom: {fileID: 480147413}
   interactText: Head Upstairs (Get some rest!)
   toUpstairs: 0
@@ -14654,6 +14653,37 @@ Mesh:
       - serializedVersion: 1
         m_IndexStart: 0
         m_IndexCount: 0
+--- !u!1 &1407377375
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1407377376}
+  m_Layer: 0
+  m_Name: BreakLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1407377376
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407377375}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1577799918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1409718111
 GameObject:
   m_ObjectHideFlags: 0
@@ -19476,6 +19506,71 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1297119942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1577799917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1577799918}
+  m_Layer: 0
+  m_Name: CoworkerRuntime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1577799918
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1577799917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9.78, y: 1.2, z: 3.455}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1407377376}
+  - {fileID: 1586463302}
+  - {fileID: 1625462069}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1586463301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1586463302}
+  m_Layer: 0
+  m_Name: WorkLocation
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1586463302
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1586463301}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -4.7799997, y: 0, z: -7.085}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1577799918}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1615401305
 GameObject:
   m_ObjectHideFlags: 0
@@ -19845,8 +19940,9 @@ GameObject:
   - component: {fileID: 1625462067}
   - component: {fileID: 1625462066}
   - component: {fileID: 1625462070}
+  - component: {fileID: 1625462071}
   m_Layer: 0
-  m_Name: TeleportToBreakroom
+  m_Name: Coworker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19940,13 +20036,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1625462065}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 9.78, y: 1.2, z: 3.455}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 249591542}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1577799918}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1625462070
 MonoBehaviour:
@@ -19960,10 +20056,27 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 711d6688c821432428ac76bd2f8e225a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BreakroomEntry
-  disableOnInteract: 1
   breakroom: {fileID: 249591542}
   interactText: Switch off with coworker (Take a break!)
   toUpstairs: 0
+--- !u!114 &1625462071
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1625462065}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdc1e608a797f674980a013e8f31cc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Coworker
+  isWorking: 0
+  workLocation: {fileID: 1586463302}
+  breakLocation: {fileID: 1407377376}
+  moveSpeed: 2
+  completionTime: 5
+  cooldownTime: 5
 --- !u!1 &1687099126
 GameObject:
   m_ObjectHideFlags: 0
@@ -25870,7 +25983,7 @@ SceneRoots:
   - {fileID: 1460458426}
   - {fileID: 1859631029}
   - {fileID: 762910918}
-  - {fileID: 1625462069}
+  - {fileID: 1577799918}
   - {fileID: 1427498299}
   - {fileID: 1476289870}
   - {fileID: 113301512}

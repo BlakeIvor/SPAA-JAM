@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TeleportInteract : MonoBehaviour, IInteractable
 {
-    [SerializeField] bool disableOnInteract = false; // Whether to disable the entry point after interaction
     [SerializeField] private Transform breakroom; // The position to teleport the player to
     [SerializeField] private string interactText; // The text to display the interaction message
     [SerializeField] private bool toUpstairs;
@@ -50,11 +49,13 @@ public class TeleportInteract : MonoBehaviour, IInteractable
         characterController.transform.position = breakroom.position;
         characterController.enabled = true; // Re-enable the CharacterController after teleportation
 
+        if(TryGetComponent<Coworker>(out Coworker coworker))
+        {
+            coworker.SetWorking(!coworker.isWorking);
+        }
         if (!toUpstairs)
         {
             GameManager.Instance.RecordBreak();
         }
-
-        if(disableOnInteract) gameObject.SetActive(false); // Optionally deactivate the entry point after use
     }
 }
