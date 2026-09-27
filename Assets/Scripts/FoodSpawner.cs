@@ -38,12 +38,11 @@ public class FoodSpawner : MonoBehaviour, IInteractable
             {
                 if (spawnedObjects[i] != null)
                 {
-                    // Example interaction: Destroy the spawned food object
-                    var obj = spawnedObjects[i];
-                    spawnedObjects.Remove(obj);
-                    Destroy(obj);
+                    Destroy(spawnedObjects[i]);
                 }
             }
+
+            spawnedObjects.Clear();
 
             // Respawn food objects in spawn locations
             for (int i = 0; i < spawnLocations.Length; i++)
@@ -69,7 +68,7 @@ public class FoodSpawner : MonoBehaviour, IInteractable
 
     private IEnumerator Cooldown()
     {
-        float remainingTime = cooldownTime;
+        remainingTime = cooldownTime;
         while (remainingTime > 0)
         {
             yield return new WaitForSeconds(1f);
