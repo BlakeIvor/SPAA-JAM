@@ -5,6 +5,9 @@ using UnityEngine.InputSystem;
 
 public class Interactor : MonoBehaviour
 {
+    // Static reference to the Interactor instance, allowing other scripts to easily access it
+    public static Interactor Instance { get; private set; }
+
     public Transform HoldPoint;
     [SerializeField] TextMeshProUGUI InteractText;
     public Vector3 ThrowDirection => transform.forward;
@@ -13,6 +16,18 @@ public class Interactor : MonoBehaviour
 
     // Specifically tracks if we are currently holding a grabbable object
     private IGrabbable currentHeldObject;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Instance = this;
+        }
+    }
 
     void Update()
     {

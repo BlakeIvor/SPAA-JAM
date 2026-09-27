@@ -23,5 +23,12 @@ public class GrabbableObject : MonoBehaviour, IGrabbable
         rb.isKinematic = false;
         // Apply a force to the object when it is dropped
         //rb.AddForce(interactor.ThrowDirection * 5f, ForceMode.Impulse);
+
+        // If object has a Food component, call its OnDrop method
+        Food food = GetComponent<Food>();
+        if (food != null)
+        {
+            food.OnDrop();
+        }
     }
 }

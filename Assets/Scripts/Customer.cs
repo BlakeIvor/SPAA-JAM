@@ -133,4 +133,13 @@ public class Customer : MonoBehaviour, IInteractable
             CompleteOrder();
         }
     }
+
+    public void Interact(FoodSpawner.FlavorType flavor)
+    {
+        // Implement customer satisfaction logic based on flavor type here
+        if(State == CustomerState.WaitingForOrder)
+        {
+            CompleteOrder();
+        }
+    }
 }
