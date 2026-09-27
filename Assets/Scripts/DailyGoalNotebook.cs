@@ -36,17 +36,10 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     private void Start()
     {
         CloseGoalChoices();
+        GameManager.Instance.OnDailyGoalProgressChanged += UpdateSelectedGoalText;
     }
 
-    private void OnEnable()
-    {
-        if (GameManager.Instance != null)
-        {
-            GameManager.Instance.OnDailyGoalProgressChanged += UpdateSelectedGoalText;
-        }
-    }
-
-    private void OnDisable()
+    private void OnDestroy()
     {
         if (GameManager.Instance != null)
         {
@@ -150,7 +143,6 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
         {
             return;
         }
-
         string[] goalParts = SelectedGoal.Split(' ');
         if (goalParts.Length > 1 && int.TryParse(goalParts[1], out int requiredAmount))
         {
