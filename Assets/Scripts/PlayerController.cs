@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.Rendering.DebugUI.Table;
 
 [RequireComponent(typeof(CharacterController))]
 public class PlayerController : MonoBehaviour
@@ -10,36 +11,65 @@ public class PlayerController : MonoBehaviour
     private CharacterController controller;
     private Vector3 verticalVelocity;
 
-    // Awake is called when the script instance is being loaded
     void Awake()
     {
         controller = GetComponent<CharacterController>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        // Read left/right input using the new Input System (keyboard + gamepad)
         float horizontal = 0f;
+        float vertical = 0f;
 
+        // Keyboard input
         if (Keyboard.current != null)
         {
-            if (Keyboard.current.aKey.isPressed || Keyboard.current.leftArrowKey.isPressed) horizontal -= 1f;
-            if (Keyboard.current.dKey.isPressed || Keyboard.current.rightArrowKey.isPressed) horizontal += 1f;
+            // Left / Right
+            if (Keyboard.current.aKey.isPressed ||
+                Keyboard.current.leftArrowKey.isPressed)
+            {
+                horizontal -= 1f;
+            }
+
+            if (Keyboard.current.dKey.isPressed ||
+                Keyboard.current.rightArrowKey.isPressed)
+            {
+                horizontal += 1f;
+            }
+
+            // Forward / Backward
+            if (Keyboard.current.wKey.isPressed ||
+                Keyboard.current.upArrowKey.isPressed)
+            {
+                vertical += 1f;
+            }
+
+            if (Keyboard.current.sKey.isPressed ||
+                Keyboard.current.downArrowKey.isPressed)
+            {
+                vertical -= 1f;
+            }
         }
 
+        // Gamepad input
         if (Gamepad.current != null)
         {
-            // Gamepad left stick x axis
             horizontal += Gamepad.current.leftStick.x.ReadValue();
+            vertical += Gamepad.current.leftStick.y.ReadValue();
         }
 
+        // Clamp input
         horizontal = Mathf.Clamp(horizontal, -1f, 1f);
+        vertical = Mathf.Clamp(vertical, -1f, 1f);
 
-        // Move only left/right relative to the player's transform
-        Vector3 move = transform.right * horizontal * moveSpeed;
+        // Movement relative to player's rotation
+        Vector3 move =
+            transform.right * horizontal +
+            transform.forward * vertical;
 
-        // Simple gravity handling to keep the CharacterController grounded
+        move *= moveSpeed;
+
+        // Gravity
         if (controller.isGrounded && verticalVelocity.y < 0f)
         {
             verticalVelocity.y = -1f;
@@ -47,7 +77,9 @@ public class PlayerController : MonoBehaviour
 
         verticalVelocity.y += gravity * Time.deltaTime;
 
-        // Apply movement (horizontal + vertical)
-        controller.Move((move + verticalVelocity) * Time.deltaTime);
+        // Apply movement
+        controller.Move(
+            (move + verticalVelocity) * Time.deltaTime
+        );
     }
 }
