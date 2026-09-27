@@ -12,6 +12,8 @@ public class CustomerSpawner : MonoBehaviour
     [SerializeField] Transform[] walkInWaypoints;
     [SerializeField] Transform[] walkOutWaypoints;
 
+    [SerializeField] int maxCustomersInQueue = 5;
+
     private readonly List<Customer> customersInQueue = new();
 
     void Awake()
@@ -36,7 +38,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval);
 
-            if (GameManager.Instance.storeOpen)
+            if (GameManager.Instance.storeOpen && customersInQueue.Count < maxCustomersInQueue)
             {
                 SpawnCustomerInstance();
             }

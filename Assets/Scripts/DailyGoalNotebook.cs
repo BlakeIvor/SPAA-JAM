@@ -1,7 +1,7 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
-using System.Collections.Generic;
 
 public class DailyGoalNotebook : MonoBehaviour, IInteractable
 {
@@ -10,7 +10,9 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     [SerializeField] private Button goalChoiceButtonPrefab;
     [SerializeField] private Transform goalSelectedContainer;
     [SerializeField] private GameObject goalSelectedPrefab;
-    [SerializeField] private List<string> goalChoices = new()
+
+    [SerializeField]
+    private List<string> goalChoices = new()
     {
         "Serve 3 customers",
         "Serve 5 customers",
@@ -21,22 +23,28 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
         "Eat 2 snacks throughout the day",
         "Serve 2 customer w/ Good Recommendation",
         "Serve 3 customer w/ Good Recommendation",
-        "Serve 5 customer w/ Good Recommendation",
-
+        "Serve 5 customer w/ Good Recommendation"
     };
+
     [SerializeField] private UnityEvent<string> goalSelected;
+
     private bool isGoalSelected = false;
+    private GameObject selectedGoalObject;
     private TMPro.TMP_Text selectedGoalText;
+
+    private readonly List<Button> choiceButtons = new();
 
     public string interactMessage { get; set; } = "Choose daily goal";
     public string SelectedGoal { get; private set; }
 
-    private readonly List<Button> choiceButtons = new();
-
     private void Start()
     {
         CloseGoalChoices();
-        GameManager.Instance.OnDailyGoalProgressChanged += UpdateSelectedGoalText;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnDailyGoalProgressChanged += UpdateSelectedGoalText;
+        }
     }
 
     private void OnDestroy()
@@ -63,16 +71,35 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
 
     private void OpenGoalChoices()
     {
-        GameManager.Instance.isPaused = true;
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        if (goalChoicePanel == null || goalChoiceContainer == null || goalChoiceButtonPrefab == null)
+        if (goalChoicePanel == null ||
+            goalChoiceContainer == null ||
+            goalChoiceButtonPrefab == null)
         {
-            Debug.LogWarning("DailyGoalNotebook needs a panel, container, and button prefab assigned.", this);
+            Debug.LogWarning(
+                "DailyGoalNotebook needs a panel, container, and button prefab assigned.",
+                this
+            );
+
             return;
         }
 
+        if (GameManager.Instance == null)
+        {
+            Debug.LogWarning(
+                "DailyGoalNotebook could not find a GameManager.",
+                this
+            );
+
+            return;
+        }
+
+        GameManager.Instance.isPaused = true;
+
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
         ClearGoalChoices();
+
         goalChoicePanel.SetActive(true);
 
         List<string> availableGoals = new(goalChoices);
@@ -81,38 +108,81 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
         for (int choiceIndex = 0; choiceIndex < choicesToShow; choiceIndex++)
         {
             int randomIndex = Random.Range(0, availableGoals.Count);
+
             string goalChoice = availableGoals[randomIndex];
             availableGoals.RemoveAt(randomIndex);
 
-            Button choiceButton = Instantiate(goalChoiceButtonPrefab, goalChoiceContainer);
-            TMPro.TMP_Text choiceText = choiceButton.GetComponentInChildren<TMPro.TMP_Text>();
+            Button choiceButton =
+                Instantiate(goalChoiceButtonPrefab, goalChoiceContainer);
+
+            TMPro.TMP_Text choiceText =
+                choiceButton.GetComponentInChildren<TMPro.TMP_Text>(true);
+
             if (choiceText == null)
             {
-                Debug.LogWarning("DailyGoalNotebook button prefab needs a TMP text component.", choiceButton);
+                Debug.LogWarning(
+                    "DailyGoalNotebook button prefab needs a TMP text component.",
+                    choiceButton
+                );
+
                 Destroy(choiceButton.gameObject);
                 continue;
             }
 
             choiceText.text = goalChoice;
-            choiceButton.onClick.AddListener(() => SelectGoal(goalChoice));
+
+            string capturedGoalChoice = goalChoice;
+
+            choiceButton.onClick.AddListener(
+                () => SelectGoal(capturedGoalChoice)
+            );
+
             choiceButtons.Add(choiceButton);
         }
     }
 
     private void SelectGoal(string goalChoice)
     {
-        SelectedGoal = goalChoice;
-        GameManager.Instance.SetDailyGoal(goalChoice);
-        GameObject selectedGoal = Instantiate(goalSelectedPrefab, goalSelectedContainer);
-        TMPro.TMP_Text selectedText = selectedGoal.GetComponentInChildren<TMPro.TMP_Text>(true);
-        if (selectedText != null)
+        if (GameManager.Instance == null)
         {
-            selectedGoalText = selectedText;
+            Debug.LogWarning(
+                "DailyGoalNotebook could not find a GameManager.",
+                this
+            );
+
+            return;
         }
+
+        SelectedGoal = goalChoice;
+
+        GameManager.Instance.SetDailyGoal(goalChoice);
+
+        DestroySelectedGoalNote();
+
+        if (goalSelectedPrefab != null && goalSelectedContainer != null)
+        {
+            selectedGoalObject =
+                Instantiate(goalSelectedPrefab, goalSelectedContainer);
+
+            selectedGoalText =
+                selectedGoalObject.GetComponentInChildren<TMPro.TMP_Text>(true);
+        }
+        else
+        {
+            Debug.LogWarning(
+                "DailyGoalNotebook needs a selected goal prefab and container assigned.",
+                this
+            );
+        }
+
         UpdateSelectedGoalText();
+
         goalSelected?.Invoke(goalChoice);
+
         interactMessage = "Daily goal selected: " + goalChoice;
+
         isGoalSelected = true;
+
         CloseGoalChoices();
     }
 
@@ -120,18 +190,26 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     {
         if (goalChoicePanel != null)
         {
-            GameManager.Instance.isPaused = false;
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
             goalChoicePanel.SetActive(false);
         }
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.isPaused = false;
+        }
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void ClearGoalChoices()
     {
         foreach (Button choiceButton in choiceButtons)
         {
-            Destroy(choiceButton.gameObject);
+            if (choiceButton != null)
+            {
+                Destroy(choiceButton.gameObject);
+            }
         }
 
         choiceButtons.Clear();
@@ -139,14 +217,23 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
 
     private void UpdateSelectedGoalText()
     {
-        if (string.IsNullOrEmpty(SelectedGoal) || selectedGoalText == null || GameManager.Instance == null)
+        if (string.IsNullOrEmpty(SelectedGoal) ||
+            selectedGoalText == null ||
+            GameManager.Instance == null)
         {
             return;
         }
+
         string[] goalParts = SelectedGoal.Split(' ');
-        if (goalParts.Length > 1 && int.TryParse(goalParts[1], out int requiredAmount))
+
+        if (goalParts.Length > 1 &&
+            int.TryParse(goalParts[1], out int requiredAmount))
         {
-            selectedGoalText.text = $"{SelectedGoal} ({GameManager.Instance.GetDailyGoalProgress()}/{requiredAmount})";
+            int currentProgress =
+                GameManager.Instance.GetDailyGoalProgress();
+
+            selectedGoalText.text =
+                $"{SelectedGoal} ({currentProgress}/{requiredAmount})";
         }
         else
         {
@@ -154,15 +241,24 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
         }
     }
 
+    private void DestroySelectedGoalNote()
+    {
+        if (selectedGoalObject != null)
+        {
+            Destroy(selectedGoalObject);
+        }
+
+        selectedGoalObject = null;
+        selectedGoalText = null;
+    }
+
     public void ResetDailyGoal()
     {
         SelectedGoal = null;
         isGoalSelected = false;
-        // Destroy(goalSelectedContainer.GetChild(0).gameObject);
+
+        DestroySelectedGoalNote();
+
         interactMessage = "Choose daily goal";
-        if (selectedGoalText != null)
-        {
-            selectedGoalText.text = "";
-        }
     }
 }
