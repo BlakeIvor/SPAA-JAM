@@ -3,6 +3,8 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
+    public int foodStaminaValue = 10;
+    public float foodStaminaDuration = 100f;
     [SerializeField] private FoodSpawner.FlavorType[] flavor;
     [SerializeField] private float castRadius = 3f;
     public void OnDrop()
@@ -20,5 +22,12 @@ public class Food : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void Eat()
+    {
+        GameManager.Instance.RecordSnack();
+        Interactor.Instance.playerStamina.ApplyTemporaryBoost(foodStaminaValue, foodStaminaDuration);
+        Destroy(gameObject);
     }
 }
