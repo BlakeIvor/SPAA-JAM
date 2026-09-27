@@ -50,6 +50,11 @@ public class TeleportInteract : MonoBehaviour, IInteractable
         characterController.transform.position = breakroom.position;
         characterController.enabled = true; // Re-enable the CharacterController after teleportation
 
+        if (!toUpstairs)
+        {
+            GameManager.Instance.RecordBreak();
+        }
+
         if(disableOnInteract) gameObject.SetActive(false); // Optionally deactivate the entry point after use
     }
 }

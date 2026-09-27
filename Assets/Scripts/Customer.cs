@@ -140,12 +140,39 @@ public class Customer : MonoBehaviour, IInteractable
 
     public bool Interact(FoodSpawner.FlavorType[] flavors)
     {
-        // Implement customer satisfaction logic based on flavor type here
         if(State == CustomerState.WaitingForOrder)
         {
+            bool goodRecommendation = HasMatchingFlavor(flavors);
             CompleteOrder();
+            GameManager.Instance.RecordCustomerServed(goodRecommendation);
             return true;
         }
+        return false;
+    }
+
+    private bool HasMatchingFlavor(FoodSpawner.FlavorType[] flavors)
+    {
+        if (customerData == null || customerData.customerOrder == null || flavors == null)
+        {
+            return false;
+        }
+
+        foreach (Order order in customerData.customerOrder)
+        {
+            if (order == null)
+            {
+                continue;
+            }
+
+            foreach (FoodSpawner.FlavorType flavor in flavors)
+            {
+                if (order.flavor == flavor)
+                {
+                    return true;
+                }
+            }
+        }
+
         return false;
     }
 }
