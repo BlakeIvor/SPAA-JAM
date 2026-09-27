@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Customer", menuName = "Scriptable Objects/Customer")]
 public class CustomerSO : ScriptableObject
 {
-    public Material customerSprite;
+    public Material customerMaterial;
     public Order[] customerOrder;
     public string orderDialogue;
     public string closingDialogue;

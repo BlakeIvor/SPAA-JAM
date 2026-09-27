@@ -190,6 +190,7 @@ Transform:
   - {fileID: 2881128496742779392}
   - {fileID: 7946664766159005059}
   - {fileID: 1110721665526007339}
+  - {fileID: 8214502609032497068}
   - {fileID: 8553258151105672539}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -205,13 +206,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f58584ecf89c24fa40574108cd3ec1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawner
-  currentCustomers: 0
-  maxCustomers: 5
   spawnInterval: 12
   queueSpacing: 1.25
   customerPrefab: {fileID: 8206869914428677548, guid: 629e6fbf2c37a3f4b8a2ec17b6a8b4df, type: 3}
   customerTypes:
   - {fileID: 11400000, guid: e7dc5a4787b691045885102a21908e9b, type: 2}
+  - {fileID: 11400000, guid: 821898ae78adf7748abbf802901d2ad6, type: 2}
+  - {fileID: 11400000, guid: 002b1b8358301d44b8f06de142b565ed, type: 2}
+  - {fileID: 11400000, guid: 3557c15538a9eff46aa46d211aefb6a3, type: 2}
+  - {fileID: 11400000, guid: d48ed1b6dbf7bc743b44f54a132f28ff, type: 2}
+  - {fileID: 11400000, guid: 0a816e65d9032b54c82de96d7bdcd161, type: 2}
   walkInWaypoints:
   - {fileID: 3564046791153119041}
   - {fileID: 3472746759431142119}
@@ -219,6 +223,7 @@ MonoBehaviour:
   - {fileID: 7946664766159005059}
   walkOutWaypoints:
   - {fileID: 1110721665526007339}
+  - {fileID: 8214502609032497068}
   - {fileID: 8553258151105672539}
 --- !u!1 &8409688758635528971
 GameObject:
@@ -246,6 +251,37 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 11.5, y: 1.25, z: -6.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6764587681852986701}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8824934894983422276
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8214502609032497068}
+  m_Layer: 0
+  m_Name: Walkout_Point1 (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8214502609032497068
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8824934894983422276}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 4.5, y: 1.25, z: -11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

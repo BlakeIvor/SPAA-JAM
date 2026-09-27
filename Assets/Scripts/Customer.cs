@@ -27,6 +27,14 @@ public class Customer : MonoBehaviour, IInteractable
     public void Initialize(CustomerSO data, Transform[] walkInPath, Transform[] walkOutPath, float spacing, Action<Customer> exitCallback)
     {
         customerData = data;
+
+        MeshRenderer meshRenderer = this.transform.GetChild(0)?.GetComponent<MeshRenderer>();
+        Debug.Log(meshRenderer.gameObject.name);
+        if (meshRenderer != null && customerData != null)
+        {
+            meshRenderer.material = customerData.customerMaterial;
+        }
+
         walkInWaypoints = walkInPath;
         walkOutWaypoints = walkOutPath;
         queueSpacing = Mathf.Max(0f, spacing);
@@ -61,8 +69,13 @@ public class Customer : MonoBehaviour, IInteractable
             return;
         }
 
+        Transform currentWaypoint = path[Mathf.Max(0, waypointIndex - 1)];
         Transform target = path[waypointIndex];
-        Vector3 nextPosition = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+        bool reachedTargetAxis;
+        Vector3 nextPosition = MoveAlongWaypointAxis(
+            currentWaypoint.position,
+            target.position,
+            out reachedTargetAxis);
 
         if (State == CustomerState.InLine && customerAhead != null)
         {
@@ -70,19 +83,51 @@ public class Customer : MonoBehaviour, IInteractable
 
             if (distanceToCustomerAhead < queueSpacing)
             {
-                Vector3 awayFromCustomerAhead = nextPosition - customerAhead.transform.position;
-                nextPosition = awayFromCustomerAhead.sqrMagnitude > 0f
-                    ? customerAhead.transform.position + awayFromCustomerAhead.normalized * queueSpacing
-                    : transform.position;
+                nextPosition = transform.position;
+                reachedTargetAxis = false;
             }
         }
 
         transform.position = nextPosition;
 
-        if (transform.position == target.position)
+        if (reachedTargetAxis)
         {
+            transform.position = target.position;
             waypointIndex++;
         }
+    }
+
+    private Vector3 MoveAlongWaypointAxis(
+        Vector3 currentWaypoint,
+        Vector3 targetWaypoint,
+        out bool reachedTargetAxis)
+    {
+        Vector3 nextPosition = transform.position;
+        float deltaX = Mathf.Abs(targetWaypoint.x - currentWaypoint.x);
+        float deltaZ = Mathf.Abs(targetWaypoint.z - currentWaypoint.z);
+        reachedTargetAxis = false;
+
+        if (deltaX >= deltaZ)
+        {
+            nextPosition.z = currentWaypoint.z;
+            nextPosition.x = Mathf.MoveTowards(
+                transform.position.x,
+                targetWaypoint.x,
+                moveSpeed * Time.deltaTime);
+            reachedTargetAxis = Mathf.Approximately(nextPosition.x, targetWaypoint.x);
+        }
+        else
+        {
+            nextPosition.x = currentWaypoint.x;
+            nextPosition.z = Mathf.MoveTowards(
+                transform.position.z,
+                targetWaypoint.z,
+                moveSpeed * Time.deltaTime);
+            reachedTargetAxis = Mathf.Approximately(nextPosition.z, targetWaypoint.z);
+        }
+
+        nextPosition.y = transform.position.y;
+        return nextPosition;
     }
 
     public void SetCustomerAhead(Customer customer)
@@ -130,7 +175,7 @@ public class Customer : MonoBehaviour, IInteractable
             OrderTicketManager.Instance.CreateOrderTicket(customerData);
             State = CustomerState.WaitingForOrder;
             Debug.Log("Customer is now waiting for order.");
-            interactMessage = "Give order to customer";
+            interactMessage = "";
         }
         else if (State == CustomerState.WaitingForOrder)
         {
@@ -146,7 +191,7 @@ public class Customer : MonoBehaviour, IInteractable
         {
             State = CustomerState.WaitingForOrder;
             Debug.Log("Customer is now waiting for order.");
-            interactMessage = "Give order to customer";
+            interactMessage = "";
         }
     }
 
