@@ -2969,7 +2969,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1356280018}
+  m_Mesh: {fileID: 1052585649}
 --- !u!33 &220038632
 MeshFilter:
   m_ObjectHideFlags: 10
@@ -28702,7 +28702,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1777387473}
   - component: {fileID: 1777387476}
-  - component: {fileID: 1777387475}
   - component: {fileID: 1777387474}
   m_Layer: 0
   m_Name: Camera
@@ -28770,14 +28769,6 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
---- !u!81 &1777387475
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1777387472}
-  m_Enabled: 1
 --- !u!20 &1777387476
 Camera:
   m_ObjectHideFlags: 0
