@@ -7,6 +7,7 @@ public class DialogueManager : MonoBehaviour
     public static DialogueManager Instance { get; private set; }
 
     public float timeBetweenChar = 0.04f;
+    [SerializeField] GameObject dialogueBox;
     [SerializeField] TextMeshProUGUI textComponent;
     private Coroutine typingCoroutine;
 
@@ -23,6 +24,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartTyping(string dialogue)
     {
+        dialogueBox.SetActive(true);
         if (typingCoroutine != null)
         {
             StopCoroutine(typingCoroutine);
@@ -39,5 +41,8 @@ public class DialogueManager : MonoBehaviour
             textComponent.text += letter;
             yield return new WaitForSeconds(timeBetweenChar);
         }
+
+        yield return new WaitForSeconds(1f); 
+        dialogueBox.SetActive(false);
     }
 }
