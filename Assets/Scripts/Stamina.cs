@@ -49,9 +49,6 @@ public class Stamina : MonoBehaviour
     /// </summary>
     public void AddStamina(float amount)
     {
-        if (amount <= 0f)
-            return;
-
         currentStamina += amount;
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
 
@@ -117,4 +114,6 @@ public class Stamina : MonoBehaviour
             staminaSlider.value = currentStamina;
         }
     }
+
+
 }
