@@ -10176,6 +10176,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e89ebc44b076454f9468c0769bbf6e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BedInteractable
+--- !u!1 &589805154
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 589805155}
+  m_Layer: 0
+  m_Name: FoodSpawn (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &589805155
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 589805154}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.119, y: 0.176, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &591237323
 GameObject:
   m_ObjectHideFlags: 0
@@ -15569,6 +15600,8 @@ MonoBehaviour:
     foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
   - position: {fileID: 1025158377}
     foodPrefab: {fileID: 263102220535323816, guid: c18b576bd1f07d341bd151b6d72801f2, type: 3}
+  - position: {fileID: 589805155}
+    foodPrefab: {fileID: 263102220535323816, guid: d315bc63e41d8924c8147fb96a2af4ce, type: 3}
 --- !u!65 &955289084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22812,6 +22845,7 @@ Transform:
   - {fileID: 458585289}
   - {fileID: 2021019569}
   - {fileID: 2060455580}
+  - {fileID: 589805155}
   - {fileID: 537239351}
   - {fileID: 10224109}
   - {fileID: 666153500}
