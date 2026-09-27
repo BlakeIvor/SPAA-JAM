@@ -2,12 +2,19 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 
-public class BreakroomEntry : MonoBehaviour, IInteractable
+public class TeleportInteract : MonoBehaviour, IInteractable
 {
+    [SerializeField] bool disableOnInteract = false; // Whether to disable the entry point after interaction
     [SerializeField] private Transform breakroom; // The position to teleport the player to
+    [SerializeField] private string interactText; // The text to display the interaction message
 
     public string interactMessage { get; set; } = "Switch off with your coworker?";
 
+    private void Start()
+    {
+        // Set the interact message to the serialized field value if it's not empty
+        interactMessage = interactText;
+    }
     public void Interact(Interactor interactor)
     {
         // Teleport into the breakroom
@@ -25,6 +32,6 @@ public class BreakroomEntry : MonoBehaviour, IInteractable
         characterController.transform.position = breakroom.position;
         characterController.enabled = true; // Re-enable the CharacterController after teleportation
 
-        gameObject.SetActive(false); // Optionally deactivate the entry point after use
+        if(disableOnInteract) gameObject.SetActive(false); // Optionally deactivate the entry point after use
     }
 }
