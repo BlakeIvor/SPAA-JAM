@@ -129,6 +129,7 @@ public class Customer : MonoBehaviour, IInteractable
             DialogueManager.Instance.StartDialogue(customerData.orderToString());
             OrderTicketManager.Instance.CreateOrderTicket(customerData);
             State = CustomerState.WaitingForOrder;
+            Debug.Log("Customer is now waiting for order.");
             interactMessage = "Give order to customer";
         }
         else if (State == CustomerState.WaitingForOrder)
@@ -138,12 +139,24 @@ public class Customer : MonoBehaviour, IInteractable
         }
     }
 
+    public void Interact()
+    {
+        // Method for customer to interact that doesn't use dialogue but allows the customer to transition the state to waiting for order
+        if (State == CustomerState.FirstInLine)
+        {
+            State = CustomerState.WaitingForOrder;
+            Debug.Log("Customer is now waiting for order.");
+            interactMessage = "Give order to customer";
+        }
+    }
+
     public bool Interact(FoodSpawner.FlavorType[] flavors)
     {
         // Implement customer satisfaction logic based on flavor type here
         if(State == CustomerState.WaitingForOrder)
         {
             CompleteOrder();
+            Debug.Log("Customer received order and is satisfied!");
             return true;
         }
         return false;

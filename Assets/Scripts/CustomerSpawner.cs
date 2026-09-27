@@ -89,4 +89,13 @@ public class CustomerSpawner : MonoBehaviour
     {
         return customersInQueue.Count;
     }
+
+    public Customer getCustomerInQueue(int index)
+    {
+        if (index < 0 || index >= customersInQueue.Count)
+        {
+            return null;
+        }
+        return customersInQueue[index];
+    }
 }

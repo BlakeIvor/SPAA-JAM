@@ -34,9 +34,15 @@ public class OrderTicketManager : MonoBehaviour
 
     public void RemoveOrderTicket(CustomerSO customerData)
     {
-        var ticket = ticketList[0];
-        ticketList.RemoveAt(0);
-        Destroy(ticket.gameObject);
-
+        try
+        {
+            var ticket = ticketList[0];
+            ticketList.RemoveAt(0);
+            Destroy(ticket.gameObject);
+        }
+        catch (ArgumentOutOfRangeException)
+        {
+            Debug.LogWarning("No order tickets to remove.", this);
+        }
     }
 }
