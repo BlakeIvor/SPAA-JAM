@@ -53,5 +53,9 @@ public class TeleportInteract : MonoBehaviour, IInteractable
         {
             coworker.SetWorking(!coworker.isWorking);
         }
+        if (!toUpstairs)
+        {
+            GameManager.Instance.RecordBreak();
+        }
     }
 }

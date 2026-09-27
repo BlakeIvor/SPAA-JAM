@@ -26,6 +26,7 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     };
     [SerializeField] private UnityEvent<string> goalSelected;
     private bool isGoalSelected = false;
+    private TMPro.TMP_Text selectedGoalText;
 
     public string interactMessage { get; set; } = "Choose daily goal";
     public string SelectedGoal { get; private set; }
@@ -35,6 +36,22 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     private void Start()
     {
         CloseGoalChoices();
+    }
+
+    private void OnEnable()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnDailyGoalProgressChanged += UpdateSelectedGoalText;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnDailyGoalProgressChanged -= UpdateSelectedGoalText;
+        }
     }
 
     public void Interact(Interactor interactor)
@@ -92,12 +109,14 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
     private void SelectGoal(string goalChoice)
     {
         SelectedGoal = goalChoice;
+        GameManager.Instance.SetDailyGoal(goalChoice);
         GameObject selectedGoal = Instantiate(goalSelectedPrefab, goalSelectedContainer);
-        TMPro.TMP_Text selectedText = selectedGoal.GetComponentInChildren<TMPro.TMP_Text>();
+        TMPro.TMP_Text selectedText = selectedGoal.GetComponentInChildren<TMPro.TMP_Text>(true);
         if (selectedText != null)
         {
-            selectedText.text = goalChoice;
+            selectedGoalText = selectedText;
         }
+        UpdateSelectedGoalText();
         goalSelected?.Invoke(goalChoice);
         interactMessage = "Daily goal selected: " + goalChoice;
         isGoalSelected = true;
@@ -123,5 +142,23 @@ public class DailyGoalNotebook : MonoBehaviour, IInteractable
         }
 
         choiceButtons.Clear();
+    }
+
+    private void UpdateSelectedGoalText()
+    {
+        if (string.IsNullOrEmpty(SelectedGoal) || selectedGoalText == null || GameManager.Instance == null)
+        {
+            return;
+        }
+
+        string[] goalParts = SelectedGoal.Split(' ');
+        if (goalParts.Length > 1 && int.TryParse(goalParts[1], out int requiredAmount))
+        {
+            selectedGoalText.text = $"{SelectedGoal} ({GameManager.Instance.GetDailyGoalProgress()}/{requiredAmount})";
+        }
+        else
+        {
+            selectedGoalText.text = SelectedGoal;
+        }
     }
 }
