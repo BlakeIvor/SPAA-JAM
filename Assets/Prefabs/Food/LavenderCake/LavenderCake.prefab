@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 950506942161324315}
   - component: {fileID: -3691937123336594385}
   m_Layer: 0
-  m_Name: SavoryCroissant
+  m_Name: LavenderCake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ec5314ee97fe441b944a6055136a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableObject
-  objectName: Croissant\n- Savory
+  objectName: Lavender\n- Soothing\n- Sweet
 --- !u!54 &950506942161324315
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -170,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Food
   foodStaminaValue: 10
   foodStaminaDuration: 100
-  flavor: 01000000
+  flavor: 0400000000000000
   castRadius: 6
 --- !u!1 &4745110176012742550
 GameObject:
@@ -201,7 +201,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4196591357090184005}
@@ -239,7 +239,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7699c11c65e4b724e819aad56b81ddbd, type: 2}
+  - {fileID: 2100000, guid: 960182ef39e441d49baa22a490f95561, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -128,6 +128,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8ec5314ee97fe441b944a6055136a3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GrabbableObject
+  objectName: Lemonade\n-Sweet\n-Refreshing
 --- !u!54 &950506942161324315
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -169,7 +170,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Food
   foodStaminaValue: 10
   foodStaminaDuration: 100
-  flavor: 0000000002000000
+  flavor: 0000000003000000
   castRadius: 6
 --- !u!1 &4745110176012742550
 GameObject:
