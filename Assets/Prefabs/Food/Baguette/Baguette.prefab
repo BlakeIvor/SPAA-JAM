@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 950506942161324315}
   - component: {fileID: -3691937123336594385}
   m_Layer: 0
-  m_Name: GrabbableExample
+  m_Name: Baguette
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -169,7 +169,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Food
   foodStaminaValue: 10
   foodStaminaDuration: 100
-  flavor: 00000000
+  flavor: 01000000
   castRadius: 6
 --- !u!1 &4745110176012742550
 GameObject:
@@ -200,7 +200,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.2}
+  m_LocalScale: {x: 1, y: 1, z: 0.2}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4196591357090184005}
@@ -238,7 +238,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 754c8f55a4f007b4b93b9da83bc16d03, type: 2}
+  - {fileID: 2100000, guid: 60664528658eb1742b1d0301647a5482, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -279,7 +279,7 @@ MeshCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 5
   m_Convex: 1
   m_CookingOptions: 30

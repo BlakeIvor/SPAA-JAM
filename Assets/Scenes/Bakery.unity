@@ -15550,25 +15550,25 @@ MonoBehaviour:
   remainingTime: 0
   spawnLocations:
   - position: {fileID: 458585289}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: a73f1232399f33040a96e931fad93842, type: 3}
   - position: {fileID: 2021019569}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: a9426bb9d14c74a4a86f09c7dd96ce95, type: 3}
   - position: {fileID: 2060455580}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: d1677504dc5c2004dbd499a7f1159030, type: 3}
   - position: {fileID: 537239351}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: cdef79235a9bb824797fae88bdb6ba84, type: 3}
   - position: {fileID: 10224109}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: 0b733457142b1ce4e902b0f75c4a237e, type: 3}
   - position: {fileID: 666153500}
     foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
   - position: {fileID: 1458627310}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
   - position: {fileID: 2067363338}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: 1869cdba993b25049846034a6c025b32, type: 3}
   - position: {fileID: 706685099}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
   - position: {fileID: 1025158377}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
 --- !u!65 &955289084
 BoxCollider:
   m_ObjectHideFlags: 0
