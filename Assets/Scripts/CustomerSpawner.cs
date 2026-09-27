@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CustomerSpawner : MonoBehaviour
 {
-    public int currentCustomers = 0;
-    public int maxCustomers = 5;
     [SerializeField] float spawnInterval = 12f;
     [SerializeField] float queueSpacing = 1.25f;
     [SerializeField] GameObject customerPrefab;
@@ -26,7 +24,7 @@ public class CustomerSpawner : MonoBehaviour
         {
             yield return new WaitForSeconds(spawnInterval);
 
-            if (currentCustomers < maxCustomers)
+            if (GameManager.Instance.storeOpen)
             {
                 SpawnCustomerInstance();
             }
@@ -58,14 +56,12 @@ public class CustomerSpawner : MonoBehaviour
         customer.Initialize(customerTypes[Random.Range(0, customerTypes.Length)], walkInWaypoints, walkOutWaypoints, queueSpacing, CustomerLeft);
         customer.SetCustomerAhead(customerAhead);
         customersInQueue.Add(customer);
-        currentCustomers++;
     }
 
     private void CustomerLeft(Customer customer)
     {
         customersInQueue.Remove(customer);
         UpdateQueueLinks();
-        currentCustomers = Mathf.Max(0, currentCustomers - 1);
     }
 
     private void UpdateQueueLinks()
