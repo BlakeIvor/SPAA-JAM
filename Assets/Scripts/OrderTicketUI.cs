@@ -15,5 +15,5 @@ public class OrderTicketUI : MonoBehaviour
         orderDetailsText.text = orderString;
     }
 
-
+    
 }

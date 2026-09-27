@@ -16,6 +16,12 @@ public class Interactor : MonoBehaviour
 
     void Update()
     {
+        if (DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueOpen)
+        {
+            InteractText.text = "";
+            return;
+        }
+
         if (Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
             // Case 1: We are currently holding an object, so press 'E' to drop it

@@ -21,8 +21,10 @@ public class PlayerController : MonoBehaviour
         float horizontal = 0f;
         float vertical = 0f;
 
+        bool dialogueOpen = DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueOpen;
+
         // Keyboard input
-        if (Keyboard.current != null)
+        if (!dialogueOpen && Keyboard.current != null)
         {
             // Left / Right
             if (Keyboard.current.aKey.isPressed ||
@@ -52,7 +54,7 @@ public class PlayerController : MonoBehaviour
         }
 
         // Gamepad input
-        if (Gamepad.current != null)
+        if (!dialogueOpen && Gamepad.current != null)
         {
             horizontal += Gamepad.current.leftStick.x.ReadValue();
             vertical += Gamepad.current.leftStick.y.ReadValue();
