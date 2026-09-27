@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CustomerSO
   customerMaterial: {fileID: 2100000, guid: 67cff56758528524ca7eb66ef5468dd0, type: 2}
   customerOrder:
-  - {fileID: 11400000, guid: 8bd418e14c644804da07bd124de55ff4, type: 2}
+  - {fileID: 11400000, guid: 5f8c84ab83ed94b46a8b330b7cfe6c4b, type: 2}
   orderDialogue: 'I would like to buy '
   closingDialogue: Bye
   paymentAmount: 10

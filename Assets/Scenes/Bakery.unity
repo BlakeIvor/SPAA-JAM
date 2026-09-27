@@ -15698,17 +15698,19 @@ MonoBehaviour:
   - position: {fileID: 10224109}
     foodPrefab: {fileID: 263102220535323816, guid: 0b733457142b1ce4e902b0f75c4a237e, type: 3}
   - position: {fileID: 666153500}
-    foodPrefab: {fileID: 263102220535323816, guid: 924d98cdf99fc0244bdaca3c22adb06d, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: 7837f75831d8d4b40a0d1c956c487c34, type: 3}
   - position: {fileID: 1458627310}
     foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
   - position: {fileID: 2067363338}
     foodPrefab: {fileID: 263102220535323816, guid: 1869cdba993b25049846034a6c025b32, type: 3}
   - position: {fileID: 706685099}
-    foodPrefab: {fileID: 263102220535323816, guid: eb07c7a96deb002449cb05080785cd11, type: 3}
+    foodPrefab: {fileID: 263102220535323816, guid: c8d09058efc75cb4f8419abaca83745d, type: 3}
   - position: {fileID: 1025158377}
     foodPrefab: {fileID: 263102220535323816, guid: c18b576bd1f07d341bd151b6d72801f2, type: 3}
   - position: {fileID: 589805155}
     foodPrefab: {fileID: 263102220535323816, guid: d315bc63e41d8924c8147fb96a2af4ce, type: 3}
+  - position: {fileID: 2093616258}
+    foodPrefab: {fileID: 263102220535323816, guid: 7efdb5eb519ccdc42b8d62667338036e, type: 3}
 --- !u!65 &955289084
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -22953,6 +22955,7 @@ Transform:
   - {fileID: 2021019569}
   - {fileID: 2060455580}
   - {fileID: 589805155}
+  - {fileID: 2093616258}
   - {fileID: 537239351}
   - {fileID: 10224109}
   - {fileID: 666153500}
@@ -32336,7 +32339,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c34618f012629db45847b90d0c672cac, type: 2}
+  - {fileID: 2100000, guid: 3f922ebec8072e6499ea63196ebd5376, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -43812,6 +43815,37 @@ Transform:
   - {fileID: 480147413}
   - {fileID: 366602805}
   m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2093616257
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2093616258}
+  m_Layer: 0
+  m_Name: FoodSpawn (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2093616258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2093616257}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -2.119, y: -0.428, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1297119942}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &2106128007
 Mesh:
