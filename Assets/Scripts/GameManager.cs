@@ -1,9 +1,26 @@
 using UnityEngine;
+using System;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
     [SerializeField] CustomerSpawner customerSpawner;
+    private bool _storeOpen;
+    public bool storeOpen
+    {
+        get => _storeOpen;
+        set
+        {
+            if (_storeOpen == value)
+            {
+                return;
+            }
+
+            _storeOpen = value;
+            OnStoreOpenChanged?.Invoke();
+        }
+    }
+    public event Action OnStoreOpenChanged;
 
     void Awake()
     {
@@ -31,5 +48,11 @@ public class GameManager : MonoBehaviour
     {
         DialogueManager.Instance.DialogueClosed -= StartGame;
         customerSpawner.StartGame();
+        storeOpen = true;
+    }
+
+    public void ToggleStoreOpen()
+    {
+        storeOpen = !storeOpen;
     }
 }
