@@ -15,7 +15,7 @@ public class CustomerSpawner : MonoBehaviour
 
     private readonly List<Customer> customersInQueue = new();
 
-    void Start()
+    public void StartGame()
     {
         StartCoroutine(SpawnCustomer());
     }
