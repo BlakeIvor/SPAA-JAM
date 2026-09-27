@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using System;
 using TMPro;
 using UnityEngine.InputSystem;
 
@@ -17,6 +18,7 @@ public class DialogueManager : MonoBehaviour
     private bool waitForAdvanceRelease;
 
     public bool IsDialogueOpen { get; private set; }
+    public event Action DialogueClosed;
 
     void Awake()
     {
@@ -87,11 +89,12 @@ public class DialogueManager : MonoBehaviour
     private IEnumerator TypeDialogue(string dialogue)
     {
         isTyping = true;
-        textComponent.text = "";
+        textComponent.text = dialogue;
+        textComponent.maxVisibleCharacters = 0;
 
-        foreach (char letter in dialogue)
+        for (int characterIndex = 1; characterIndex <= dialogue.Length; characterIndex++)
         {
-            textComponent.text += letter;
+            textComponent.maxVisibleCharacters = characterIndex;
             yield return new WaitForSeconds(timeBetweenChar);
         }
 
@@ -108,6 +111,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         textComponent.text = dialogueChain[dialogueIndex];
+        textComponent.maxVisibleCharacters = dialogueChain[dialogueIndex].Length;
         isTyping = false;
     }
 
@@ -135,5 +139,6 @@ public class DialogueManager : MonoBehaviour
         IsDialogueOpen = false;
         isTyping = false;
         dialogueBox.SetActive(false);
+        DialogueClosed?.Invoke();
     }
 }
