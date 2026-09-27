@@ -14,14 +14,14 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.01
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.7224564, g: 0.79577464, b: 0.85660374, a: 1}
-  m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
+  m_AmbientSkyColor: {r: 0.203738, g: 0.29443493, b: 0.3660378, a: 1}
+  m_AmbientEquatorColor: {r: 0.06623703, g: 0.07404194, b: 0.07924521, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 1
@@ -4878,17 +4878,6 @@ MonoBehaviour:
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
---- !u!114 &546186438 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8583578325108375452, guid: 7f5f853e16bd072488f904b93b5881ba, type: 3}
-  m_PrefabInstance: {fileID: 1395890267}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41f58584ecf89c24fa40574108cd3ec1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::CustomerSpawner
 --- !u!1 &552856199
 GameObject:
   m_ObjectHideFlags: 0
@@ -5790,6 +5779,7 @@ GameObject:
   - component: {fileID: 591592410}
   - component: {fileID: 591592409}
   - component: {fileID: 591592408}
+  - component: {fileID: 591592411}
   m_Layer: 0
   m_Name: Sun
   m_TagString: Untagged
@@ -5837,13 +5827,13 @@ Light:
   serializedVersion: 12
   m_Type: 0
   m_Color: {r: 0.9924528, g: 0.9745833, b: 0.6797365, a: 1}
-  m_Intensity: 100
+  m_Intensity: 40
   m_Range: 20
-  m_SpotAngle: 56.395344
-  m_InnerSpotAngle: 54.205734
+  m_SpotAngle: 104.813736
+  m_InnerSpotAngle: 78.12219
   m_CookieSize2D: {x: 0.5, y: 0.5}
   m_Shadows:
-    m_Type: 0
+    m_Type: 2
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 1
@@ -5899,13 +5889,35 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 591592407}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.15591304, y: -0, z: -0, w: 0.9877708}
-  m_LocalPosition: {x: 4.15553, y: 2.5, z: -10}
+  m_LocalRotation: {x: 0.15510406, y: -0.10049161, z: -0.015861938, w: 0.9826457}
+  m_LocalPosition: {x: 4.15553, y: 2, z: -14}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 17.94, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 17.556, y: -12.257, z: -3.749}
+--- !u!95 &591592411
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 591592407}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 02067692478a9af4784d2388daeedc5a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!43 &619876323
 Mesh:
   m_ObjectHideFlags: 0
@@ -7234,6 +7246,7 @@ MonoBehaviour:
   disableOnInteract: 0
   breakroom: {fileID: 480147413}
   interactText: Head Upstairs (Get some rest!)
+  toUpstairs: 0
 --- !u!43 &774752472
 Mesh:
   m_ObjectHideFlags: 0
@@ -9220,6 +9233,7 @@ GameObject:
   - component: {fileID: 1015941893}
   - component: {fileID: 1015941898}
   - component: {fileID: 1015941897}
+  - component: {fileID: 1015941899}
   m_Layer: 0
   m_Name: PlayerRef
   m_TagString: Player
@@ -9362,6 +9376,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   moveSpeed: 3
   gravity: -9.81
+--- !u!114 &1015941899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1015941892}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44d100a2282bced4bac196fd9675717c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Stamina
 --- !u!1 &1029970875
 GameObject:
   m_ObjectHideFlags: 0
@@ -13214,7 +13240,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64aaa91309946364384d178b34e6c292, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  customerSpawner: {fileID: 546186438}
 --- !u!4 &1283597803
 Transform:
   m_ObjectHideFlags: 0
@@ -19890,6 +19915,7 @@ MonoBehaviour:
   disableOnInteract: 1
   breakroom: {fileID: 249591542}
   interactText: Switch off with coworker (Take a break!)
+  toUpstairs: 0
 --- !u!1 &1687099126
 GameObject:
   m_ObjectHideFlags: 0
