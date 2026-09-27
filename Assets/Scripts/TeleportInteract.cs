@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -7,9 +8,12 @@ public class TeleportInteract : MonoBehaviour, IInteractable
     [SerializeField] private Transform breakroom; // The position to teleport the player to
     [SerializeField] private string interactText; // The text to display the interaction message
     [SerializeField] private bool toUpstairs;
+    [SerializeField] private bool coworkerInteract = false;
+    [SerializeField] private Coworker coworker; // The coworker 
 
     public string interactMessage { get; set; } = "Switch off with your coworker?";
 
+    
     private void Start()
     {
         // Set the interact message to the serialized field value if it's not empty
@@ -49,13 +53,9 @@ public class TeleportInteract : MonoBehaviour, IInteractable
         characterController.transform.position = breakroom.position;
         characterController.enabled = true; // Re-enable the CharacterController after teleportation
 
-        if(TryGetComponent<Coworker>(out Coworker coworker))
+        if (coworkerInteract && coworker != null)
         {
-            coworker.SetWorking(!coworker.isWorking);
-        }
-        if (!toUpstairs)
-        {
-            GameManager.Instance.RecordBreak();
+            coworker.isWorking = !coworker.isWorking; // Toggle the coworker's working state
         }
     }
 }
