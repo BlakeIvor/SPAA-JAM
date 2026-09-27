@@ -167,7 +167,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64afde7245f70664798982ccaa1822e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Food
-  flavor: 0
+  foodStaminaValue: 10
+  foodStaminaDuration: 100
+  flavor: 
   castRadius: 6
 --- !u!1 &4745110176012742550
 GameObject:
