@@ -4,6 +4,8 @@ using System;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+    [SerializeField] PauseMenu pauseMenu;
+    public bool isPaused { get; set; } = false;
     private bool _storeOpen;
     public bool storeOpen
     {
@@ -47,11 +49,25 @@ public class GameManager : MonoBehaviour
     {
         DialogueManager.Instance.DialogueClosed -= StartGame;
         CustomerSpawner.Instance.StartGame();
+        pauseMenu.gameObject.SetActive(false); 
         storeOpen = true;
     }
 
     public void ToggleStoreOpen()
     {
         storeOpen = !storeOpen;
+    }
+
+    public void GoToNextDay()
+    {
+        
+    }
+    
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f; 
+        isPaused = true;
+        pauseMenu.gameObject.SetActive(true); 
     }
 }
