@@ -30,6 +30,11 @@ public class FirstPersonLook : MonoBehaviour
 
     void Update()
     {
+        if (GameManager.Instance != null && GameManager.Instance.isPaused)
+        {
+            return;
+        }
+
         // 1. Get Input
         float mouseX =  Mouse.current.delta.x.value * mouseSensitivity;
         float mouseY = Mouse.current.delta.y.value * mouseSensitivity;

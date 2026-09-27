@@ -23,6 +23,17 @@ public class PlayerController : MonoBehaviour
 
         bool dialogueOpen = DialogueManager.Instance != null && DialogueManager.Instance.IsDialogueOpen;
 
+        if (Keyboard.current != null)
+        {
+            if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            {
+                if (GameManager.Instance != null)
+                {
+                    GameManager.Instance.PauseGame();
+                }
+            }
+        }
+
         // Keyboard input
         if (!dialogueOpen && Keyboard.current != null)
         {

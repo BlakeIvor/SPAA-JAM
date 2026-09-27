@@ -41,7 +41,13 @@ public class Interactor : MonoBehaviour
 
         if (Keyboard.current.eKey.wasPressedThisFrame || Mouse.current.leftButton.wasPressedThisFrame)
         {
-            // Case 1: We are currently holding an object, so press 'E' to drop it
+            // Case 1: Game is paused, do not allow interaction, some UI is open probably
+            if (GameManager.Instance != null && GameManager.Instance.isPaused)
+            {
+                return;
+            }
+            
+            // Case 2: We are currently holding an object, so press 'E' to drop it
             if (currentHeldObject != null)
             {
                 currentHeldObject.Drop(this);
@@ -49,7 +55,7 @@ public class Interactor : MonoBehaviour
                 return;
             }
 
-            // Case 2: Hand is empty, look for an interactable object
+            // Case 3: Hand is empty, look for an interactable object
             if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, castDistance))
             {
                 if (hit.collider.TryGetComponent(out IInteractable interactable))
