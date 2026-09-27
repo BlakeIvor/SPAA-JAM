@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -55,6 +56,34 @@ public class Stamina : MonoBehaviour
         currentStamina = Mathf.Clamp(currentStamina, 0f, maxStamina);
 
         UpdateSlider();
+    }
+
+    public void ApplyTemporaryBoost(float amount, float duration)
+    {
+        if (amount <= 0f || duration <= 0f)
+        {
+            return;
+        }
+
+        StartCoroutine(TemporaryBoost(amount, duration));
+    }
+
+    private IEnumerator TemporaryBoost(float amount, float duration)
+    {
+        float boostAmount = Mathf.Min(amount, maxStamina - currentStamina);
+        AddStamina(boostAmount);
+
+        float remainingBoost = boostAmount;
+        while (remainingBoost > 0f)
+        {
+            yield return null;
+
+            float staminaToRemove = Mathf.Min(
+                remainingBoost,
+                boostAmount * Time.deltaTime / duration);
+            SubtractStamina(staminaToRemove);
+            remainingBoost -= staminaToRemove;
+        }
     }
 
     /// <summary>

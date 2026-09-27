@@ -71,6 +71,15 @@ public class Interactor : MonoBehaviour
                 }
             }
         }
+        else if (Mouse.current.rightButton.wasPressedThisFrame)
+        {
+            if (currentHeldObject is Component heldComponent && heldComponent.TryGetComponent(out Food food))
+            {
+                food.Eat();
+                currentHeldObject = null;
+                return;
+            }
+        }
         else
         {
             if (currentHeldObject != null)
